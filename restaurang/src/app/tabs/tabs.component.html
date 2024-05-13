@@ -1,0 +1,12 @@
+<nav mat-tab-nav-bar [tabPanel]="tabPanel" id="test" color="primary">
+  <a mat-tab-link routerLink="dashboard" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+    Startsidan
+  </a>
+    <a mat-tab-link routerLink="/menu-management" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+      Meny
+    </a>
+    <a mat-tab-link routerLink="/booking-management" routerLinkActive #rlb="routerLinkActive" [active]="rlb.isActive">
+      Bokningar
+    </a>
+  </nav>
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

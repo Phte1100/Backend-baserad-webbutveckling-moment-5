@@ -1,0 +1,7 @@
+::ng-deep .mat-tab-nav-bar {
+    color: #3f51b5; /* Ändra till önskad färg */
+  }
+  
+  ::ng-deep .mat-tab-label.mat-tab-label-active {
+    color: #e91e63; /* Ändra till önskad aktiv färg */
+  }

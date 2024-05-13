@@ -1,0 +1,21 @@
+<h1>Fille's fastfood</h1>
+<div id="login">
+  <mat-icon aria-hidden="false" aria-label="Hamburgar-ikon" fontIcon="fastfood" color="primary"></mat-icon>
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Användarnamn</mat-label>
+      <input matInput id="username">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Lösenord</mat-label>
+      <input type="password" matInput id="password">
+    </mat-form-field>
+  </form>
+
+  <div class="example-button-row">
+    <button mat-raised-button (click)="login()" color="primary">Logga in</button><br>
+    <button mat-raised-button [routerLink]="['/register']" color="primary">Skapa ny användare</button>
+  </div>
+</div>
