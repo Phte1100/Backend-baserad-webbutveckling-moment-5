@@ -1,0 +1,33 @@
+<form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="full-width">
+      <mat-label>Namn</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+  
+    <mat-form-field class="full-width">
+      <mat-label>Telefonnummer</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+  
+    <mat-form-field class="full-width">
+      <mat-label>E-post</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+  
+    <mat-form-field class="full-width">
+      <mat-label>Antal personer</mat-label>
+      <mat-select formControlName="peopleCount">
+        <mat-option *ngFor="let number of peopleCounts" [value]="number">{{ number }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="full-width">
+      <mat-label>Datum</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Spara bokning</button>
+  </form>
+  

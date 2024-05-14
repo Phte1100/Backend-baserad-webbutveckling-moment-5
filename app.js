@@ -40,7 +40,7 @@ function loginUser(username, password) {
     .then(data => {
         if (data.token) {
             localStorage.setItem('token', data.token);
-            window.location.href = 'list.html';
+            window.location.href = 'dashboard.html';
         } else {
             throw new Error('Inget token mottaget');
         }
