@@ -12,7 +12,7 @@ function createBooking() {
     const token = localStorage.getItem('token');
     if (!token) {
         console.log('No token found, redirecting to login.');
-        window.location.href = 'index.html';
+        window.location.href = 'login.html';
         return;
     }
 

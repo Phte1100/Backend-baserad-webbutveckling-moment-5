@@ -39,6 +39,7 @@ function loginUser(username, password) {
     })
     .then(data => {
         if (data.token) {
+            console.log('JWT Token:', data.token);
             localStorage.setItem('token', data.token);
             window.location.href = 'dashboard.html';
         } else {
