@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>testsida</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/src/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
         <a href="#about" class="w3-bar-item w3-button w3-hide-small">OM OSS</a>
         <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small">MENY</a>
         <a href="#contact" class="w3-bar-item w3-button w3-hide-small">BOKA BORD</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+        <a href="/src/html/login.html" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
             <i class="fas fa-user"></i>
           </a>
           
@@ -31,16 +31,18 @@
     
       <!-- Navbar on small screens -->
       <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-        <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-        <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFOLIO</a>
-        <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
-        <a href="#" class="w3-bar-item w3-button">SEARCH</a>
+        <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">HEM</a>
+        <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">OM OSS</a>
+        <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">MENY</a>
+        <a href="#contact" class="w3-bar-item w3-button">BOKA BORD</a>
       </div>
     </div>
     <!-- First Parallax Image with Logo Text -->
     <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
       <div class="w3-display-middle" style="white-space:nowrap;">
-        <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"><span class="w3-hide-small">Fille's</span> Burgare</span>
+        
+        <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">
+          <span class="w3-hide-small">Fille's</span> Burgare</span>
       </div>
     </div>
     
@@ -51,7 +53,7 @@
     <p>Välkommen till Fille's Burgare, den ultimata destinationen för burgarälskare i Sundsvall! Vi är ett lokalt företag som brinner för att servera de bästa smashed burgers med färska och högkvalitativa ingredienser. Vårt team består av passionerade kockar som noggrant väljer ut varje ingrediens för att skapa en smakupplevelse utöver det vanliga. Oavsett om du är ute efter en klassisk cheeseburger eller en av våra specialburgare, kan du vara säker på att varje tugga är fylld med kärlek och omsorg.</p>
     <div class="w3-row">
       <div class="w3-col m6 w3-center w3-padding-large">
-        <img src="src/img/kitchen.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Our Kitchen" width="500" height="333">
+        <img src="/src/img/kitchen.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Photo of Our Kitchen" width="500" height="333">
       </div>
   
       <!-- Hide this text on small devices -->
@@ -143,14 +145,7 @@
     </footer>
      
     <script>
-    // Modal Image Gallery
-    function onClick(element) {
-      document.getElementById("img01").src = element.src;
-      document.getElementById("modal01").style.display = "block";
-      var captionText = document.getElementById("caption");
-      captionText.innerHTML = element.alt;
-    }
-    
+
     // Change style of navbar on scroll
     window.onscroll = function() {myFunction()};
     function myFunction() {
@@ -172,9 +167,7 @@
         }
     }
     </script>
-    <script src="fetchMenu.js"></script>
-    <script src="createMenu.js"></script>
-    <script src="createBooking.js"></script>
-    <script src="fetchBookings.js"></script>
+    <script src="/src/js/fetchMenu.js"></script>
+    <script src="/src/js/createBooking.js"></script>
     </body>
     </html>

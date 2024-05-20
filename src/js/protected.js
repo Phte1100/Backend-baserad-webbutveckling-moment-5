@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function checkAuthentication() {
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = 'index.html'; // Omdirigera till inloggningssidan om ingen token finns
+        window.location.href = '/src/html/login.html'; // Omdirigera till inloggningssidan om ingen token finns
     }
 }
 
@@ -23,7 +23,7 @@ function fetchProtectedData() {
                 // Token är ogiltig eller har gått ut
                 alert('Sessionen har gått ut. Vänligen logga in igen.');
                 localStorage.removeItem('token'); // Rensa token
-                window.location.href = 'index.html'; // Omdirigera till inloggningssidan
+                window.location.href = '/src/html/login.html'; // Omdirigera till inloggningssidan
             }
             throw new Error('Kunde inte hämta skyddad data.');
         }
@@ -55,7 +55,7 @@ function logout() {
     const Feedback = document.getElementById('Feedback');
     Feedback.textContent = 'Du har loggats ut.';
     setTimeout(() => {
-        window.location.href = 'index.html'; // Omdirigera till inloggningssidan
+        window.location.href = '/src/html/login.html'; // Omdirigera till inloggningssidan
     }, 1000); // Vänta en sekund innan omdirigering
 }
 

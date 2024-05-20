@@ -67,7 +67,7 @@ function registerUser(username, email, password) {
         const Feedback = document.getElementById('Feedback');
         Feedback.textContent = 'Registreringen lyckades! Vänligen logga in.';
         setTimeout(() => {
-            window.location.href = 'index.html'; // Omdirigera till inloggningssidan
+            window.location.href = '/src/html/login.html'; // Omdirigera till inloggningssidan
         }, 1000); // Vänta en sekund innan omdirigering
     })
     .catch(error => {
