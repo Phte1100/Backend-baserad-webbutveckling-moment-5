@@ -13,7 +13,7 @@
     <!-- Navbar (sit on top) -->
     <header>
     <div class="topnav" id="myTopnav">
-        <a href="#home">HEM</a>
+        <a href="/test.html">Fille's Burgare</a>
         <a href="#omoss">OM OSS</a>
         <a href="#meny">MENY</a>
         <a href="#boka">BOKA BORD</a>
@@ -24,6 +24,7 @@
           <i class="fa fa-bars"></i>
         </a>
       </div>
+
     </header>
     <!-- Hero Section -->
     <div class="bgimg-1 display-container opacity-min" id="hero">
@@ -50,9 +51,39 @@
     </section>
     <div class="parallax2"></div>
     <section id="boka" class="section">
-        <h2>Kontakt</h2>
-        <p>Kontaktinformation och footer...</p>
+        <h2>Boka bord</h2>
+      <form id="bookingForm">
+        <label for="name">Namn:</label>
+        <input type="text" id="name" placeholder="Förnamn">
+        <label for="phone">Telefonnummer:</label>
+        <input type="text" id="phone" placeholder="Telefonnummer">
+        <label for="email">E-post:</label>
+        <input type="email" id="email" placeholder="E-post">
+        <label for="numberOfPeople">Antal personer:</label>
+        <select id="numberOfPeople">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <label for="date">Datum:</label>
+        <input type="date" id="date">
+        <label for="time">Tid:</label>
+        <input type="time" id="time">
+        <button type="submit">Boka</button>
+    </form>
+    </div>
     </section>
+    <footer>
+        <div class="footer-content">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Fille's Burgare. All rights reserved.</p>
+        </div>
+    </footer>
     <script src="/src/js/fetchMenu.js"></script>
     <script src="test.js"></script>
 </body>

@@ -1,29 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetchMenuItems();
+    if (document.getElementById('menuItemsList') || document.getElementById('menuSection')) {
+        fetchMenuItems();
+    }
+
+    const updateButton = document.getElementById('updateMenuButton');
+    if (updateButton) {
+        updateButton.addEventListener('click', function() {
+            updateMenuItem();
+        });
+    }
 });
 
 function fetchMenuItems() {
     fetch('http://localhost:3001/api/menu')
-    .then(response => {
-        if (!response.ok) throw new Error(`Failed to fetch menu items. Status: ${response.status}`);
-        return response.json();
-    })
-    .then(data => {
-        menuItems = data;
-        displayMenuItems(menuItems);
-        printMenuAsArticles(menuItems);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+        .then(response => {
+            if (!response.ok) throw new Error(`Failed to fetch menu items. Status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => {
+            displayMenuItems(data);
+            printMenuAsArticles(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 function displayMenuItems(menuItems) {
     const menuItemsList = document.getElementById('menuItemsList');
-    if (!menuItemsList) {
-        console.error('Element with id "menuItemsList" not found');
-        return;
-    }
+    if (!menuItemsList) return; // Exit if the element does not exist
+
     menuItemsList.innerHTML = ''; // Clear existing menu items
 
     menuItems.forEach(menuItem => {
@@ -41,11 +47,9 @@ function displayMenuItems(menuItems) {
 
 function printMenuAsArticles(menuItems) {
     const menuSection = document.getElementById('menuSection');
-    if (!menuSection) {
-        console.error('Element with id "menuSection" not found');
-        return;
-    }
-    menuSection.innerHTML = ''; // Rensa tidigare innehåll
+    if (!menuSection) return; // Exit if the element does not exist
+
+    menuSection.innerHTML = ''; // Clear previous content
 
     menuItems.forEach(item => {
         const article = document.createElement('article');
@@ -61,11 +65,7 @@ function printMenuAsArticles(menuItems) {
 function attachMenuEventListeners() {
     const deleteButtons = document.querySelectorAll('.delete-menu-btn');
     const editButtons = document.querySelectorAll('.edit-menu-btn');
-    if (deleteButtons.length === 0 || editButtons.length === 0) {
-        console.error('No delete or edit buttons found');
-        return;
-    }
-    
+
     deleteButtons.forEach(button => {
         button.addEventListener('click', function() {
             const menuId = this.getAttribute('data-menuid');
@@ -82,7 +82,7 @@ function attachMenuEventListeners() {
 }
 
 function editMenuItem(id) {
-    console.log(`Editing menu item ID: ${id}`); // Debug utskrift
+    console.log(`Editing menu item ID: ${id}`);
 
     const token = localStorage.getItem('token');
     if (!token) {
@@ -96,31 +96,22 @@ function editMenuItem(id) {
             'Authorization': `Bearer ${token}`
         }
     })
-    .then(response => {
-        if (!response.ok) throw new Error('Failed to fetch menu item. Status: ' + response.status);
-        return response.json();
-    })
-    .then(menuItem => {
-        document.getElementById('menuId').value = menuItem._id;
-        document.getElementById('menuName').value = menuItem.name;
-        document.getElementById('description').value = menuItem.description;
-        document.getElementById('price').value = menuItem.price;
-        document.getElementById('category').value = menuItem.category;
-        document.getElementById('updateMenuButton').style.display = 'block';
-        document.getElementById('menuForm').querySelector('button[type="submit"]').style.display = 'none';
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
-
-const updateButton = document.getElementById('updateMenuButton');
-if (updateButton) {
-    updateButton.addEventListener('click', function() {
-        updateMenuItem();
-    });
-} else {
-    console.error('Element with id "updateMenuButton" not found');
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to fetch menu item. Status: ' + response.status);
+            return response.json();
+        })
+        .then(menuItem => {
+            document.getElementById('menuId').value = menuItem._id;
+            document.getElementById('menuName').value = menuItem.name;
+            document.getElementById('description').value = menuItem.description;
+            document.getElementById('price').value = menuItem.price;
+            document.getElementById('category').value = menuItem.category;
+            document.getElementById('updateMenuButton').style.display = 'block';
+            document.getElementById('menuForm').querySelector('button[type="submit"]').style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 function updateMenuItem() {
@@ -143,18 +134,18 @@ function updateMenuItem() {
         },
         body: JSON.stringify({ name, description, price, category })
     })
-    .then(response => {
-        if (!response.ok) throw new Error('Failed to update menu item. Status: ' + response.status);
-        return response.json();
-    })
-    .then(data => {
-        console.log('Menu item updated:', data);
-        fetchMenuItems(); // Refresh menu items list
-        clearMenuForm();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to update menu item. Status: ' + response.status);
+            return response.json();
+        })
+        .then(data => {
+            console.log('Menu item updated:', data);
+            fetchMenuItems(); // Refresh menu items list
+            clearMenuForm();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 function clearMenuForm() {
@@ -181,11 +172,11 @@ function deleteMenuItem(id) {
             'Authorization': `Bearer ${token}`
         }
     })
-    .then(response => {
-        if (!response.ok) throw new Error('Failed to delete menu item. Status: ' + response.status);
-        fetchMenuItems(); // Refresh menu items list
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to delete menu item. Status: ' + response.status);
+            fetchMenuItems(); // Refresh menu items list
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }

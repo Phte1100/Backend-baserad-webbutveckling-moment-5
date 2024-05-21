@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     checkAuthentication();
     fetchProtectedData();
+
+    const logoutButton = document.getElementById('logoutButton');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', logout);
+    }
 });
 
 function checkAuthentication() {
@@ -34,8 +39,10 @@ function fetchProtectedData() {
     })
     .catch(error => {
         console.error('Error:', error);
-        const Feedback = document.getElementById('Feedback');
-        Feedback.textContent = 'Ett fel inträffade vid hämtning av data. Vänligen försök igen.';
+        const feedback = document.getElementById('feedback');
+        if (feedback) {
+            feedback.textContent = 'Ett fel inträffade vid hämtning av data. Vänligen försök igen.';
+        }
     });
 }
 
@@ -52,11 +59,11 @@ function sanitizeData(data) {
 
 function logout() {
     localStorage.removeItem('token'); // Rensa token
-    const Feedback = document.getElementById('Feedback');
-    Feedback.textContent = 'Du har loggats ut.';
+    const feedback = document.getElementById('feedback');
+    if (feedback) {
+        feedback.textContent = 'Du har loggats ut.';
+    }
     setTimeout(() => {
         window.location.href = '/src/html/login.html'; // Omdirigera till inloggningssidan
     }, 1000); // Vänta en sekund innan omdirigering
 }
-
-document.getElementById('logoutButton').addEventListener('click', logout);
