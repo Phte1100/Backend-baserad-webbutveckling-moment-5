@@ -134,16 +134,29 @@ function updateBooking() {
 }
 
 function clearForm() {
-    document.getElementById('bookingId').value = '';
-    document.getElementById('name').value = '';
-    document.getElementById('phone').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('numberOfPeople').value = '1';
-    document.getElementById('date').value = '';
-    document.getElementById('time').value = '';
-    document.getElementById('updateButton').style.display = 'none';
-    document.getElementById('bookingForm').querySelector('button[type="submit"]').style.display = 'block';
+    const bookingIdElement = document.getElementById('bookingId');
+    const nameElement = document.getElementById('name');
+    const phoneElement = document.getElementById('phone');
+    const emailElement = document.getElementById('email');
+    const numberOfPeopleElement = document.getElementById('numberOfPeople');
+    const dateElement = document.getElementById('date');
+    const timeElement = document.getElementById('time');
+
+    if (bookingIdElement) bookingIdElement.value = '';
+    if (nameElement) nameElement.value = '';
+    if (phoneElement) phoneElement.value = '';
+    if (emailElement) emailElement.value = '';
+    if (numberOfPeopleElement) numberOfPeopleElement.value = '1';
+    if (dateElement) dateElement.value = '';
+    if (timeElement) timeElement.value = '';
+
+    const updateButton = document.getElementById('updateButton');
+    if (updateButton) updateButton.style.display = 'none';
+
+    const submitButton = document.getElementById('bookingForm').querySelector('button[type="submit"]');
+    if (submitButton) submitButton.style.display = 'block';
 }
+
 
 function deleteBooking(id) {
     console.log(`Delete booking ID: ${id}`); // Debug utskrift

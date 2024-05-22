@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
     checkAuthentication();
     fetchProtectedData();
 
-    const logoutButton = document.getElementById('logoutButton');
-    if (logoutButton) {
-        logoutButton.addEventListener('click', logout);
+    const logoutLink = document.getElementById('logoutLink');
+    if (logoutLink) {
+        logoutLink.addEventListener('click', logout);
     }
 });
 

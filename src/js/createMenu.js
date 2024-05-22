@@ -13,10 +13,10 @@ function createMenuItem() {
         return;
     }
 
-    const name = document.getElementById('menuName').value;
-    const description = document.getElementById('description').value;
-    const price = document.getElementById('price').value;
-    const category = document.getElementById('category').value;
+    const name = sanitizeInput(document.getElementById('menuName').value);
+    const description = sanitizeInput(document.getElementById('description').value);
+    const price = sanitizeInput(document.getElementById('price').value);
+    const category = sanitizeInput(document.getElementById('category').value);
 
     fetch('http://localhost:3001/api/menu', {
         method: 'POST',
@@ -83,6 +83,8 @@ function clearForm() {
     document.getElementById('description').value = '';
     document.getElementById('price').value = '';
     document.getElementById('category').value = '';
+    document.getElementById('updateMenuButton').style.display = 'none';
+    document.getElementById('menuForm').querySelector('button[type="submit"]').style.display = 'block';
 }
 
 

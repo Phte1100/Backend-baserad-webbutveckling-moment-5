@@ -7,24 +7,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function createBooking() {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        window.location.href = '/src/html/login.html';
-        return;
-    }
-
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const numberOfPeople = document.getElementById('numberOfPeople').value;
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
+    const name = sanitizeInput(document.getElementById('name').value);
+    const phone = sanitizeInput(document.getElementById('phone').value);
+    const email = sanitizeInput(document.getElementById('email').value);
+    const numberOfPeople = sanitizeInput(document.getElementById('numberOfPeople').value);
+    const date = sanitizeInput(document.getElementById('date').value);
+    const time = sanitizeInput(document.getElementById('time').value);
 
     fetch('http://localhost:3001/api/bookings', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            // 'Authorization': `Bearer ${token}` // Remove this line
         },
         body: JSON.stringify({ name, phone, email, numberOfPeople, date, time })
     })
@@ -34,11 +28,12 @@ function createBooking() {
     })
     .then(data => {
         console.log('Booking created:', data);
-        fetchBookings(); // Refresh bookings list
+        showSnackbar('Bokning skapad!');
         clearForm();
     })
     .catch(error => {
         console.error('Error:', error);
+        showSnackbar('Något gick fel. Försök igen.');
     });
 }
 
@@ -74,7 +69,9 @@ function updateBooking() {
     })
     .then(data => {
         console.log('Booking updated:', data);
-        fetchBookings(); // Refresh bookings list
+        if (document.getElementById('bookingsList')) {
+            fetchBookings(); // Refresh bookings list
+        }
         clearForm();
         document.getElementById('updateButton').style.display = 'none';
         document.getElementById('bookingForm').querySelector('button[type="submit"]').style.display = 'block';
@@ -85,21 +82,30 @@ function updateBooking() {
 }
 
 function clearForm() {
-    document.getElementById('bookingId').value = '';
-    document.getElementById('name').value = '';
-    document.getElementById('phone').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('numberOfPeople').value = '1';
-    document.getElementById('date').value = '';
-    document.getElementById('time').value = '';
+    const bookingId = document.getElementById('bookingId');
+    const name = document.getElementById('name');
+    const phone = document.getElementById('phone');
+    const email = document.getElementById('email');
+    const numberOfPeople = document.getElementById('numberOfPeople');
+    const date = document.getElementById('date');
+    const time = document.getElementById('time');
+
+    if (bookingId) bookingId.value = '';
+    if (name) name.value = '';
+    if (phone) phone.value = '';
+    if (email) email.value = '';
+    if (numberOfPeople) numberOfPeople.value = '1';
+    if (date) date.value = '';
+    if (time) time.value = '';
 }
 
-
 function deleteBooking(id) {
+    console.log(`Delete booking ID: ${id}`); // Debug utskrift
+
     const token = localStorage.getItem('token');
     if (!token) {
         console.log('No token found, redirecting to login.');
-        window.location.href = 'login.html';
+        window.location.href = '/src/html/login.html';
         return;
     }
 
@@ -110,10 +116,10 @@ function deleteBooking(id) {
         }
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to delete booking. Status: ' + response.status);
+        if (!response.ok) throw new Error('Failed to delete booking. Status: ' + response.status);
+        if (document.getElementById('bookingsList')) {
+            fetchBookings(); // Refresh bookings list
         }
-        fetchBookings(); // Refresh bookings list
     })
     .catch(error => {
         console.error('Error:', error);

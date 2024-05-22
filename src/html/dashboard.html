@@ -3,29 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Skyddad Sida</title>
-    <link rel="stylesheet" href="/test.css">
+    <link rel="stylesheet" href="/src/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <header>
-        <div class="topnav" id="myTopnav">
-            <a href="/test.html">Fille's Burgare</a>
-            <a href="#omoss">OM OSS</a>
-            <a href="#meny">MENY</a>
-            <a href="#boka">BOKA BORD</a>
-            <a href="/src/html/login.html">
-                <i class="fas fa-user"></i>
-              </a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-              <i class="fa fa-bars"></i>
+        <div class="topnav" id="myTopnav"> <!-- Lägg till id här -->
+            <a href="/src/index.html">Hem</a>
+            <a href="javascript:void(0);" id="logoutLink">
+                <span class="material-symbols-outlined">
+                    logout
+                </span>
             </a>
-          </div>
-    
-        </header>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </header>
     <div class="admin">
-        
         <h1>Fille's Burgare</h1>
         <div id="formStyle">
             <h2>Boka/Ändra bokning</h2>
@@ -42,38 +40,42 @@
                 <label for="date">Datum</label>
                 <input type="date" id="date">
                 <label for="time">Tid</label>
-                <input type="time" id="time">
+                <input type="time" id="time" step="1800">
                 <button type="submit">Boka</button>
                 <button type="button" id="updateButton" style="display: none;">Uppdatera</button>
             </form>
+        </div>
+        <div id="formStyle">
             <div id="bookings">
                 <h2>Bokningar</h2>
                 <ul id="bookingsList"></ul>
             </div>
         </div>
-    <div id="formStyle">
-        <h2>Skapa/Ändra meny</h2>
-        <form id="menuForm">
-            <input type="hidden" id="menuId">
-            <label for="menuName">Namn</label>
-            <input type="text" id="menuName">
-            <label for="description">Beskrivning</label>
-            <input type="text" id="description">
-            <label for="price">Pris</label>
-            <input type="number" id="price">
-            <label for="category">Kategori</label>
-            <input type="text" id="category">
-            <button type="submit">Lägg till</button>
-            <button type="button" id="updateMenuButton" style="display: none;">Uppdatera</button>
-        </form>
-        <div id="menu">
-            <h2>meny</h2>
-            <div id="menuItemsList"></div>
+        
+        <div id="formStyle">
+            <h2>Skapa/Ändra meny</h2>
+            <form id="menuForm">
+                <input type="hidden" id="menuId">
+                <label for="menuName">Namn</label>
+                <input type="text" id="menuName">
+                <label for="description">Beskrivning</label>
+                <input type="text" id="description">
+                <label for="price">Pris</label>
+                <input type="number" id="price">
+                <label for="category">Kategori</label>
+                <input type="text" id="category">
+                <button type="submit">Lägg till</button>
+                <button type="button" id="updateMenuButton" style="display: none;">Uppdatera</button>
+            </form>
+        </div>
+        <div id="formStyle">
+            <div id="menuPrint">
+                <h2>meny</h2>
+                <div id="menuItemsList"></div>
+            </div>
+        </div>
         </div>
     </div>
-    <button id="logoutButton">Logga ut</button>
-</div>
-</div>
     <footer>
         <div class="footer-content">
             <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -84,10 +86,5 @@
             <p>&copy; 2024 Fille's Burgare. All rights reserved.</p>
         </div>
     </footer>
-    <script src="/src/js/fetchBookings.js"></script>
-    <script src="/src/js/createBooking.js"></script>
-    <script src="/src/js/fetchMenu.js"></script>
-    <script src="/src/js/createMenu.js"></script>
-    <script src="/src/js/protected.js"></script>
-</body>
+    <script src="/src/js/dashboard.js" type="module"></script>
 </html>
