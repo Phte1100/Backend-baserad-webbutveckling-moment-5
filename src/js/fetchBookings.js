@@ -26,39 +26,75 @@ function fetchBookings() {
 
 function displayBookings(bookings) {
     const bookingsList = document.getElementById('bookingsList');
+    if (!bookingsList) {
+        console.error('Element with id "bookingsList" not found');
+        return;
+    }
     bookingsList.innerHTML = ''; // Clear existing bookings
 
     bookings.forEach(booking => {
         const li = document.createElement('li');
         li.innerHTML = `
             ${booking.name} - ${booking.date.split('T')[0]} - ${booking.time} - ${booking.numberOfPeople} personer
-            <button type="button" class="btn edit-btn" data-bookingid="${booking._id}">Redigera</button>
-            <button type="button" class="btn delete-btn" data-bookingid="${booking._id}">Radera</button>
+            <span class="material-icons edit-booking-icon" data-bookingid="${booking._id}">refresh</span>
+            <span class="material-icons delete-booking-icon" data-bookingid="${booking._id}">delete</span>
         `;
         bookingsList.appendChild(li);
     });
 
-    attachEventListeners();
+    attachBookingEventListeners();
 }
 
-function attachEventListeners() {
-    document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const bookingID = this.getAttribute('data-bookingid');
-            deleteBooking(bookingID);
+function attachBookingEventListeners() {
+    const deleteIcons = document.querySelectorAll('.delete-booking-icon');
+    const editIcons = document.querySelectorAll('.edit-booking-icon');
+    if (deleteIcons.length === 0 || editIcons.length === 0) {
+        console.error('No delete or edit icons found');
+        return;
+    }
+    
+    deleteIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            const bookingId = this.getAttribute('data-bookingid');
+            deleteBooking(bookingId);
         });
     });
 
-    document.querySelectorAll('.edit-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const bookingID = this.getAttribute('data-bookingid');
-            editBooking(bookingID);
+    editIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            const bookingId = this.getAttribute('data-bookingid');
+            editBooking(bookingId);
         });
+    });
+}
+
+function deleteBooking(id) {
+    console.log(`Delete booking ID: ${id}`);
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        console.log('No token found, redirecting to login.');
+        window.location.href = '/src/html/login.html';
+        return;
+    }
+
+    fetch(`http://localhost:3001/api/bookings/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        if (!response.ok) throw new Error('Failed to delete booking. Status: ' + response.status);
+        fetchBookings(); // Refresh bookings list
+    })
+    .catch(error => {
+        console.error('Error:', error);
     });
 }
 
 function editBooking(id) {
-    console.log(`Editing booking ID: ${id}`); // Debug utskrift
+    console.log(`Editing booking ID: ${id}`);
 
     const token = localStorage.getItem('token');
     if (!token) {
@@ -126,59 +162,21 @@ function updateBooking() {
     .then(data => {
         console.log('Booking updated:', data);
         fetchBookings(); // Refresh bookings list
-        clearForm();
+        clearBookingForm();
     })
     .catch(error => {
         console.error('Error:', error);
     });
 }
 
-function clearForm() {
-    const bookingIdElement = document.getElementById('bookingId');
-    const nameElement = document.getElementById('name');
-    const phoneElement = document.getElementById('phone');
-    const emailElement = document.getElementById('email');
-    const numberOfPeopleElement = document.getElementById('numberOfPeople');
-    const dateElement = document.getElementById('date');
-    const timeElement = document.getElementById('time');
-
-    if (bookingIdElement) bookingIdElement.value = '';
-    if (nameElement) nameElement.value = '';
-    if (phoneElement) phoneElement.value = '';
-    if (emailElement) emailElement.value = '';
-    if (numberOfPeopleElement) numberOfPeopleElement.value = '1';
-    if (dateElement) dateElement.value = '';
-    if (timeElement) timeElement.value = '';
-
-    const updateButton = document.getElementById('updateButton');
-    if (updateButton) updateButton.style.display = 'none';
-
-    const submitButton = document.getElementById('bookingForm').querySelector('button[type="submit"]');
-    if (submitButton) submitButton.style.display = 'block';
-}
-
-
-function deleteBooking(id) {
-    console.log(`Delete booking ID: ${id}`); // Debug utskrift
-
-    const token = localStorage.getItem('token');
-    if (!token) {
-        console.log('No token found, redirecting to login.');
-        window.location.href = '/src/html/login.html';
-        return;
-    }
-
-    fetch(`http://localhost:3001/api/bookings/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
-    .then(response => {
-        if (!response.ok) throw new Error('Failed to delete booking. Status: ' + response.status);
-        fetchBookings(); // Refresh bookings list
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+function clearBookingForm() {
+    document.getElementById('bookingId').value = '';
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('numberOfPeople').value = '1';
+    document.getElementById('date').value = '';
+    document.getElementById('time').value = '';
+    document.getElementById('updateButton').style.display = 'none';
+    document.getElementById('bookingForm').querySelector('button[type="submit"]').style.display = 'block';
 }

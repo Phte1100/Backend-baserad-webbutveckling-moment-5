@@ -68,7 +68,6 @@ em {
   justify-content: center;
   align-items: center;
   margin: auto;
-  font-size: 60px;
 }
 
 #logoutButton {
@@ -109,10 +108,14 @@ em {
 }
 
 #formStyle {
+  display: flex;
+  flex-direction: column;
   margin: auto;
   margin-top: 5%;
   width: 100%; 
   max-width: 600px;
+  justify-content: center;
+  align-items: center;
 }
 
 #formStyle a {
@@ -121,12 +124,16 @@ em {
   font-weight: bold;
 }
 
+#formStyle a:hover {
+  text-decoration: underline;
+}
+
 #formStyle input {
   width: 100%; 
 }
 
 #loginForm button, #registerForm button, #bookingForm button, #menuForm button {
-  width: 20%; 
+  max-width: 30%; 
 }
 
 #about {
@@ -202,8 +209,8 @@ em {
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 100%; /* Change this to 100% */
-  max-width: 600px; /* Add a max-width */
+  width: 100%; 
+  max-width: 300px; 
 }
 
 #menuForm input, #bookingForm input {
@@ -315,6 +322,19 @@ footer {
 #menuItemsList {
   margin: auto;
 }
+
+.edit-menu-icon, .delete-menu-icon, .edit-booking-icon, .delete-booking-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 24px; /* Adjust size as needed */
+  vertical-align: middle;
+}
+
+.edit-menu-icon:hover, .delete-menu-icon:hover, .edit-booking-icon:hover, .delete-booking-icon:hover {
+  color: #ff6347; /* Change to the desired hover color */
+}
+
+
 
 /* Add this to your CSS file */
 #snackbar {

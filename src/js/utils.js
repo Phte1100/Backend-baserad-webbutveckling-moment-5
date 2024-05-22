@@ -1,8 +1,9 @@
+// utils.js
 document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('.section');
     let currentSectionIndex = 0;
 
-    // Kontrollera om tidinputfältet finns innan du försöker lägga till en event-lyssnare
+    // Hämta tidinputfältet
     const timeInput = document.getElementById('time');
     if (timeInput) {
         timeInput.addEventListener('input', function() {
@@ -31,7 +32,7 @@ export function myFunction() {
     } else {
         x.className = "topnav";
     }
-  }
+}
 
 // Funktion för att visa en snackbar med ett meddelande
 export function showSnackbar(message) {
