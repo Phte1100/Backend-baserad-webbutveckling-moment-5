@@ -1,28 +1,7 @@
-// utils.js
-document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('.section');
-    let currentSectionIndex = 0;
-
-    // Hämta tidinputfältet
-    const timeInput = document.getElementById('time');
-    if (timeInput) {
-        timeInput.addEventListener('input', function() {
-            const timeValue = timeInput.value;
-            const [hours, minutes] = timeValue.split(':').map(Number);
-
-            if (minutes !== 0 && minutes !== 30) {
-                if (minutes < 15) {
-                    timeInput.value = `${hours.toString().padStart(2, '0')}:00`;
-                } else if (minutes < 45) {
-                    timeInput.value = `${hours.toString().padStart(2, '0')}:30`;
-                } else {
-                    const nextHour = (hours + 1) % 24;
-                    timeInput.value = `${nextHour.toString().padStart(2, '0')}:00`;
-                }
-            }
-        });
-    }
-});
+/*
+ * Denna fil innehåller allmänna verktygsfunktioner som används i flera delar av applikationen.
+ * Funktioner inkluderar att växla navigeringsmenyn, visa snackbars och sanera inmatade värden.
+ */
 
 // Funktion för att växla navigeringsmenyn på små skärmar
 export function myFunction() {
@@ -42,6 +21,7 @@ export function showSnackbar(message) {
     setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }
 
+// Funktion för att sanera inmatade värden för att undvika XSS-attacker
 export function sanitizeInput(input) {
     return input ? input.replace(/(<([^>]+)>)/ig, '') : '';
 }

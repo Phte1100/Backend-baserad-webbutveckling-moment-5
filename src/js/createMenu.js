@@ -1,3 +1,12 @@
+/*
+ * Denna fil hanterar skapande av nya menyalternativ på webbplatsen.
+ * Innehåller funktioner för att skapa nya menyalternativ och sanera inmatade värden.
+ * Funktionen fetchMenuItems importeras från fetchMenu.js för att uppdatera menyalternativen efter skapande.
+ */
+
+import { fetchMenuItems, sanitizeInput } from './fetchMenu.js';
+
+// När sidan är laddad, lägg till händelselyssnare på formuläret för att skapa menyalternativ
 document.addEventListener('DOMContentLoaded', function() {
     const menuForm = document.getElementById('menuForm');
     menuForm.addEventListener('submit', function(event) {
@@ -6,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Funktion för att skapa ett nytt menyalternativ
 function createMenuItem() {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -32,81 +42,8 @@ function createMenuItem() {
     })
     .then(data => {
         console.log('Menu item created:', data);
-        fetchMenuItems(); // Refresh menu items list
-        clearMenuForm();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
-function updateMenu() {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        console.log('No token found, redirecting to login.');
-        window.location.href = 'login.html';
-        return;
-    }
-
-    const name = document.getElementById('menuName').value;
-    const description = document.getElementById('description').value;
-    const price = document.getElementById('price').value;
-    const category = document.getElementById('category').value;
-
-    fetch(`http://localhost:3001/api/menu/${id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ name, description, price, category })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to update menu. Status: ' + response.status);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Booking updated:', data);
-        fetchBookings(); // Refresh bookings list
-        clearForm();
-        document.getElementById('updateButton').style.display = 'none';
-        document.getElementById('menuItemForm').querySelector('button[type="submit"]').style.display = 'block';
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
-
-function clearForm() {
-    document.getElementById('menuName').value = '';
-    document.getElementById('description').value = '';
-    document.getElementById('price').value = '';
-    document.getElementById('category').value = '';
-    document.getElementById('updateMenuButton').style.display = 'none';
-    document.getElementById('menuForm').querySelector('button[type="submit"]').style.display = 'block';
-}
-
-
-function deleteMenuItem(id) {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        console.log('No token found, redirecting to login.');
-        window.location.href = 'login.html';
-        return;
-    }
-
-    fetch(`http://localhost:3001/api/menu/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to delete menuitem. Status: ' + response.status);
-        }
-        fetchBookings(); // Refresh bookings list
+        fetchMenuItems(); // Uppdatera menyalternativen
+        clearMenuForm(); // Rensa formuläret
     })
     .catch(error => {
         console.error('Error:', error);

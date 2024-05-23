@@ -10,8 +10,18 @@ body, html {
 }
 
 h1, h2, h3 {
-  font-family: "Press Start 2P";
+  font-family: "Eczar", serif;
   text-align: center;
+  margin-top: 3%;
+  margin-bottom: 1%;
+}
+
+h1 {
+  font-size: 64px;
+}
+
+h2 {
+  font-size: 42px;
 }
 
 ul, li {
@@ -20,7 +30,13 @@ ul, li {
 }
 
 em {
-  font-family: "Press Start 2P", sans-serif;
+  font-family: "Eczar", serif;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+i {
+  font-size: 20px;
 }
 
 /* Add a black background color to the top navigation */
@@ -31,6 +47,9 @@ em {
   width: 100%;
   top: 0;
   z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  height: auto;
 }
 
 /* Style the links inside the navigation bar */
@@ -41,14 +60,16 @@ em {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
-  font-family: "Press Start 2P";
+  font-size: 24px;
+  font-family: "roboto", serif;
+  font-weight: 200;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
   background-color: #ddd;
   color: #777;
+  font-weight: bold;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
@@ -60,14 +81,6 @@ em {
   background-color: #333;
   color: white;
   width: auto;
-}
-
-.material-symbols-outlined {
-  color: white;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
 }
 
 #logoutButton {
@@ -103,11 +116,7 @@ em {
   min-height: 100vh;
 }
 
-.admin h1 {
-  margin-top: 20%;
-}
-
-#formStyle {
+.formStyle {
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -118,17 +127,17 @@ em {
   align-items: center;
 }
 
-#formStyle a {
+.formStyle a {
   text-decoration: none;
   color: #777;
   font-weight: bold;
 }
 
-#formStyle a:hover {
+.formStyle a:hover {
   text-decoration: underline;
 }
 
-#formStyle input {
+.formStyle input {
   width: 100%; 
 }
 
@@ -155,14 +164,30 @@ em {
 .display-middle {
   color: white;
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   white-space: nowrap;
-  padding: 0.25em 0.5em;
-  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px white;
-  border: 3px solid white;
+  font-size: 60px;
+  margin: 0%;
+}
+
+.display-middle h1 {
+  text-shadow: 4px 4px #777;
+}
+
+#heroicon {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  width: 20%;
+  height: auto;
+}
+
+.imgicon {
+  width: 100px;
+  height: auto;
 }
 
 .opacity-min {
@@ -208,7 +233,6 @@ em {
 #bookingForm, #loginForm, #registerForm, #menuForm {
   display: flex;
   flex-direction: column;
-  margin: auto;
   width: 100%; 
   max-width: 300px; 
 }
@@ -279,7 +303,7 @@ em {
 }
 
 button {
-  cursor: pointer; /* Add cursor: pointer to all buttons */
+  cursor: pointer;
 }
 
 footer {
@@ -289,7 +313,7 @@ footer {
   padding: 1em 0;
   position: relative;
   width: 100%;
-  height: 15%;
+  height: 230px;
   margin-top: 5%;
 }
 
@@ -326,42 +350,35 @@ footer {
 .edit-menu-icon, .delete-menu-icon, .edit-booking-icon, .delete-booking-icon {
   cursor: pointer;
   margin-left: 10px;
-  font-size: 24px; /* Adjust size as needed */
+  font-size: 24px;
   vertical-align: middle;
 }
 
 .edit-menu-icon:hover, .delete-menu-icon:hover, .edit-booking-icon:hover, .delete-booking-icon:hover {
-  color: #ff6347; /* Change to the desired hover color */
+  color: #ff6347;
 }
 
-
-
-/* Add this to your CSS file */
 #snackbar {
-  visibility: hidden; /* Hidden by default. Visible on click */
-  min-width: 250px; /* Set a default minimum width */
-  margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: #333; /* Black background color */
-  color: #fff; /* White text color */
-  text-align: center; /* Centered text */
-  border-radius: 2px; /* Rounded borders */
-  padding: 16px; /* Padding */
-  position: fixed; /* Sit on top of the screen */
-  z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  bottom: 30px; /* 30px from the bottom */
+  visibility: hidden; 
+  min-width: 250px; 
+  margin-left: -125px; 
+  background-color: #333; 
+  color: #fff; 
+  text-align: center;
+  border-radius: 2px; 
+  padding: 16px;
+  position: fixed; 
+  z-index: 1; 
+  left: 50%; 
+  bottom: 30px; 
 }
 
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
 #snackbar.show {
-  visibility: visible; /* Show the snackbar */
-  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-  However, delay the fade out process for 2.5 seconds */
+  visibility: visible;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
-/* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein {
   from {bottom: 0; opacity: 0;}
   to {bottom: 30px; opacity: 1;}
@@ -391,6 +408,18 @@ footer {
   }
 }
 
+@media screen and (min-width: 1000px) {
+  #logoutLink {
+    float: right;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  #loginlink {
+    float: right;
+  }
+}
+
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
 @media screen and (max-width: 1000px) {
   .topnav.responsive {position: fixed;}
@@ -406,9 +435,12 @@ footer {
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   .display-middle h1 {
-    font-size: 1rem;
+    font-size: 50px;
+  }
+  #heroicon {
+    display: none;
   }
 }
 

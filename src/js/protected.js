@@ -1,3 +1,9 @@
+/*
+* Denna fil hanterar användarautentisering och skyddad data. 
+* Vid inladdning kontrollerar den om användaren är autentiserad och hämtar skyddad data.
+* Innehåller funktioner för att kontrollera autentisering, hämta skyddad data, sanera data och logga ut användaren.
+*/
+
 document.addEventListener('DOMContentLoaded', function() {
     checkAuthentication();
     fetchProtectedData();
@@ -8,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Funktion för att kontrollera om användaren är autentiserad
 function checkAuthentication() {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -15,6 +22,7 @@ function checkAuthentication() {
     }
 }
 
+// Funktion för att hämta skyddad data från servern
 function fetchProtectedData() {
     const token = localStorage.getItem('token');
     fetch('http://localhost:3001/api/protected', {
@@ -46,6 +54,7 @@ function fetchProtectedData() {
     });
 }
 
+// Funktion för att sanera användardata
 function sanitizeData(data) {
     if (!Array.isArray(data)) {
         data = [data]; 
@@ -57,6 +66,7 @@ function sanitizeData(data) {
     }));
 }
 
+// Funktion för att logga ut användaren
 function logout() {
     localStorage.removeItem('token'); // Rensa token
     const feedback = document.getElementById('feedback');

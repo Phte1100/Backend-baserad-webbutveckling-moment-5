@@ -1,3 +1,9 @@
+/*
+ * Denna fil hanterar hämtning och visning av menyalternativ på webbplatsen.
+ * Innehåller funktioner för att hämta menyalternativ från servern, visa dem som artiklar eller lista,
+ * samt för att redigera och radera menyalternativ.
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
     const menuSection = document.getElementById('menuSection');
     const menuItemsList = document.getElementById('menuItemsList');
@@ -11,7 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 let menuItems = [];
 
-function fetchMenuItems() {
+// Funktion för att hämta menyalternativ från servern
+export function fetchMenuItems() {
     fetch('http://localhost:3001/api/menu')
     .then(response => {
         if (!response.ok) throw new Error(`Failed to fetch menu items. Status: ${response.status}`);
@@ -31,11 +38,12 @@ function fetchMenuItems() {
     });
 }
 
+// Funktion för att visa menyalternativ som artiklar för externa användare
 function printMenuAsArticles(menuItems) {
     const menuSection = document.getElementById('menuSection');
-    if (!menuSection) return; // Exit if the element does not exist
+    if (!menuSection) return; 
 
-    menuSection.innerHTML = ''; // Clear previous content
+    menuSection.innerHTML = ''; 
 
     menuItems.forEach(item => {
         const article = document.createElement('article');
@@ -48,13 +56,14 @@ function printMenuAsArticles(menuItems) {
     });
 }
 
+// Funktion för att visa menyalternativ som lista med ikoner i admingränssnittet
 function displayMenuItems(menuItems) {
     const menuItemsList = document.getElementById('menuItemsList');
     if (!menuItemsList) {
         console.error('Element with id "menuItemsList" not found');
         return;
     }
-    menuItemsList.innerHTML = ''; // Clear existing menu items
+    menuItemsList.innerHTML = ''; 
 
     menuItems.forEach(menuItem => {
         const li = document.createElement('li');
@@ -69,6 +78,7 @@ function displayMenuItems(menuItems) {
     attachMenuEventListeners();
 }
 
+// Funktion för att lägga till händelselyssnare på redigerings- och raderingsikoner
 function attachMenuEventListeners() {
     const deleteIcons = document.querySelectorAll('.delete-menu-icon');
     const editIcons = document.querySelectorAll('.edit-menu-icon');
@@ -88,6 +98,7 @@ function attachMenuEventListeners() {
     });
 }
 
+// Hämtar ett menyalternativ från servern och fyller i formulärfält för redigering
 function editMenuItem(id) {
     console.log(`Editing menu item ID: ${id}`);
 
@@ -121,13 +132,7 @@ function editMenuItem(id) {
     });
 }
 
-const updateMenuButton = document.getElementById('updateMenuButton');
-if (updateMenuButton) {
-    updateMenuButton.addEventListener('click', function() {
-        updateMenuItem();
-    });
-}
-
+// Skickar de uppdaterade värdena från formulärfält till servern för att uppdatera menyalternativet
 function updateMenuItem() {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -136,10 +141,10 @@ function updateMenuItem() {
     }
 
     const id = document.getElementById('menuId').value;
-    const name = document.getElementById('menuName').value;
-    const description = document.getElementById('description').value;
-    const price = document.getElementById('price').value;
-    const category = document.getElementById('category').value;
+    const name = sanitizeInput(document.getElementById('menuName').value);
+    const description = sanitizeInput(document.getElementById('description').value);
+    const price = sanitizeInput(document.getElementById('price').value);
+    const category = sanitizeInput(document.getElementById('category').value);
 
     fetch(`http://localhost:3001/api/menu/${id}`, {
         method: 'PUT',
@@ -155,7 +160,7 @@ function updateMenuItem() {
     })
     .then(data => {
         console.log('Menu item updated:', data);
-        fetchMenuItems(); // Refresh menu items list
+        fetchMenuItems();
         clearMenuForm();
     })
     .catch(error => {
@@ -163,6 +168,7 @@ function updateMenuItem() {
     });
 }
 
+// Rensa formuläret efter uppdatering eller skapande av menyalternativ
 function clearMenuForm() {
     document.getElementById('menuId').value = '';
     document.getElementById('menuName').value = '';
@@ -173,6 +179,7 @@ function clearMenuForm() {
     document.getElementById('menuForm').querySelector('button[type="submit"]').style.display = 'block';
 }
 
+// Raderar ett menyalternativ
 function deleteMenuItem(id) {
     console.log(`Delete menu item ID: ${id}`);
 
@@ -191,9 +198,14 @@ function deleteMenuItem(id) {
     })
     .then(response => {
         if (!response.ok) throw new Error('Failed to delete menu item. Status: ' + response.status);
-        fetchMenuItems(); // Refresh menu items list
+        fetchMenuItems();
     })
     .catch(error => {
         console.error('Error:', error);
     });
+}
+
+// Funktion för att sanera inmatade värden för att undvika XSS-attacker
+export function sanitizeInput(input) {
+    return input ? input.replace(/(<([^>]+)>)/ig, '') : '';
 }
