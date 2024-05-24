@@ -4,9 +4,10 @@
   "description": "",
   "source": "src/index.html",
   "dependencies": {
-    "parse-json": "^5.2.0"
+    "parcel": "^2.12.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+  },
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html"
@@ -14,5 +15,4 @@
   "keywords": [],
   "author": "",
   "license": "ISC"
-
 }
