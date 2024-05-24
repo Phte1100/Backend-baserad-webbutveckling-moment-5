@@ -1,7 +1,7 @@
 5922
 86C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\is-extglob133600661407320025 1
 85C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\@mischnic133600661391256772 1
-75C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\package.json133610117880630570 0
+75C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\package.json133610124116218241 0
 122C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\css-select\node_modules\dom-serializer\LICENSE133600661404369367 0
 117C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\@swc\helpers\src\_to_consumable_array.mjs133600661439222840 0
 110C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\htmlnano\lib\modules\minifyCss.cjs133600661415221812 0
