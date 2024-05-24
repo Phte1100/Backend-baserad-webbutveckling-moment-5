@@ -2,6 +2,7 @@
   "name": "backend-baserad-webbutveckling-moment-5",
   "version": "1.0.0",
   "description": "",
+  "source": "src/index.html",
   "dependencies": {
     "parse-json": "^5.2.0"
   },
@@ -13,5 +14,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC"
-  
+
 }
