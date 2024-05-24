@@ -1,4 +1,5 @@
-import { createBooking, updateBooking, clearForm, deleteBooking, fetchBookings } from './bookingService.js';
+// createBooking.js
+import { createBooking, updateBooking, clearForm } from './bookingService.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     const bookingForm = document.getElementById('bookingForm');

@@ -1,5 +1,15 @@
 // bookingService.js
 
+// Funktion för att visa snackbar-meddelande
+export function showSnackbar(message) {
+    const snackbar = document.getElementById('snackbar');
+    snackbar.textContent = message;
+    snackbar.className = 'show';
+    setTimeout(() => {
+        snackbar.className = snackbar.className.replace('show', '');
+    }, 3000);
+}
+
 // Hämta bokningar från servern
 export function fetchBookings() {
     const token = localStorage.getItem('token');
@@ -46,6 +56,7 @@ export function createBooking() {
     .then(data => {
         console.log('Booking created:', data);
         showSnackbar('Bokning skapad!');
+        fetchBookings(); // Uppdatera bokningslistan
         clearForm();
     })
     .catch(error => {
@@ -87,6 +98,7 @@ export function updateBooking() {
         console.log('Booking updated:', data);
         fetchBookings(); // Uppdatera bokningslistan
         clearForm();
+        showSnackbar('Bokning uppdaterad!');
         document.getElementById('updateButton').style.display = 'none';
         document.getElementById('bookingForm').querySelector('button[type="submit"]').style.display = 'block';
     })
@@ -134,6 +146,7 @@ export function deleteBooking(id) {
     .then(response => {
         if (!response.ok) throw new Error('Failed to delete booking. Status: ' + response.status);
         fetchBookings(); // Uppdatera bokningslistan
+        showSnackbar('Bokning raderad!');
     })
     .catch(error => {
         console.error('Error:', error);
@@ -144,7 +157,7 @@ export function deleteBooking(id) {
 export function displayBookings(bookings) {
     const bookingsList = document.getElementById('bookingsList');
     if (!bookingsList) {
-        console.error('Element with id "bookingsList" not found');
+        console.warn('Element with id "bookingsList" not found');
         return;
     }
     bookingsList.innerHTML = ''; // Clear existing bookings
@@ -167,7 +180,7 @@ export function attachBookingEventListeners() {
     const deleteIcons = document.querySelectorAll('.delete-booking-icon');
     const editIcons = document.querySelectorAll('.edit-booking-icon');
     if (deleteIcons.length === 0 || editIcons.length === 0) {
-        console.error('No delete or edit icons found');
+        console.warn('No delete or edit icons found');
         return;
     }
     
@@ -220,4 +233,9 @@ export function editBooking(id) {
     .catch(error => {
         console.error('Error:', error);
     });
+}
+
+// Funktion för att sanera inmatade värden för att undvika XSS-attacker
+export function sanitizeInput(input) {
+    return input ? input.replace(/(<([^>]+)>)/ig, '') : '';
 }
