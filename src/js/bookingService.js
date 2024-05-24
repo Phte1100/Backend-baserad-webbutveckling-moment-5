@@ -168,7 +168,8 @@ export function displayBookings(bookings) {
             ${booking.name} - ${booking.date.split('T')[0]} - ${booking.time} - ${booking.numberOfPeople} personer
             <span class="material-icons edit-booking-icon" data-bookingid="${booking._id}">refresh</span>
             <span class="material-icons delete-booking-icon" data-bookingid="${booking._id}">delete</span>
-        `;
+        <hr>
+            `;
         bookingsList.appendChild(li);
     });
 

@@ -4,7 +4,8 @@
  * Funktionen fetchMenuItems importeras från fetchMenu.js för att uppdatera menyalternativen efter skapande.
  */
 
-import { fetchMenuItems, sanitizeInput } from './fetchMenu.js';
+import { fetchMenuItems, sanitizeInput, clearMenuForm, updateMenuItem } from './fetchMenu.js';
+import { showSnackbar } from './utils.js';
 
 // När sidan är laddad, lägg till händelselyssnare på formuläret för att skapa menyalternativ
 document.addEventListener('DOMContentLoaded', function() {
@@ -13,6 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         createMenuItem();
     });
+
+    const updateButton = document.getElementById('updateMenuButton');
+    if (updateButton) {
+        updateButton.addEventListener('click', function() {
+            updateMenuItem();
+        });
+    }
 });
 
 // Funktion för att skapa ett nytt menyalternativ
@@ -44,8 +52,10 @@ function createMenuItem() {
         console.log('Menu item created:', data);
         fetchMenuItems(); // Uppdatera menyalternativen
         clearMenuForm(); // Rensa formuläret
+        showSnackbar('Menyalternativ skapat!');
     })
     .catch(error => {
         console.error('Error:', error);
+        showSnackbar('Något gick fel. Försök igen.');
     });
 }

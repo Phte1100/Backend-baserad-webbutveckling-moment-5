@@ -1,8 +1,12 @@
+// fetchMenu.js
+
 /*
  * Denna fil hanterar hämtning och visning av menyalternativ på webbplatsen.
  * Innehåller funktioner för att hämta menyalternativ från servern, visa dem som artiklar eller lista,
  * samt för att redigera och radera menyalternativ.
  */
+
+import { showSnackbar } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     const menuSection = document.getElementById('menuSection');
@@ -69,9 +73,11 @@ function displayMenuItems(menuItems) {
         const li = document.createElement('li');
         li.innerHTML = `
             ${menuItem.name} - ${menuItem.description} - ${menuItem.price} kr - ${menuItem.category}
+            <br>
             <span class="material-icons edit-menu-icon" data-menuid="${menuItem._id}">refresh</span>
             <span class="material-icons delete-menu-icon" data-menuid="${menuItem._id}">delete</span>
-        `;
+            <hr>
+            `;
         menuItemsList.appendChild(li);
     });
 
@@ -133,7 +139,7 @@ function editMenuItem(id) {
 }
 
 // Skickar de uppdaterade värdena från formulärfält till servern för att uppdatera menyalternativet
-function updateMenuItem() {
+export function updateMenuItem() {
     const token = localStorage.getItem('token');
     if (!token) {
         window.location.href = '/src/html/login.html';
@@ -162,14 +168,16 @@ function updateMenuItem() {
         console.log('Menu item updated:', data);
         fetchMenuItems();
         clearMenuForm();
+        showSnackbar('Menyalternativ uppdaterad!');
     })
     .catch(error => {
         console.error('Error:', error);
+        showSnackbar('Något gick fel. Försök igen.');
     });
 }
 
 // Rensa formuläret efter uppdatering eller skapande av menyalternativ
-function clearMenuForm() {
+export function clearMenuForm() {
     document.getElementById('menuId').value = '';
     document.getElementById('menuName').value = '';
     document.getElementById('description').value = '';
@@ -199,9 +207,11 @@ function deleteMenuItem(id) {
     .then(response => {
         if (!response.ok) throw new Error('Failed to delete menu item. Status: ' + response.status);
         fetchMenuItems();
+        showSnackbar('Menyalternativ raderad!');
     })
     .catch(error => {
         console.error('Error:', error);
+        showSnackbar('Något gick fel. Försök igen.');
     });
 }
 
