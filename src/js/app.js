@@ -41,7 +41,7 @@ function loginUser(username, password) {
         if (data.token) {
             console.log('JWT Token:', data.token);
             localStorage.setItem('token', data.token);
-            window.location.href = '/src/html/dashboard.html';
+            window.location.href = 'dashboard.html';
         } else {
             throw new Error('Inget token mottaget');
         }
@@ -67,7 +67,7 @@ function registerUser(username, email, password) {
         const Feedback = document.getElementById('Feedback');
         Feedback.textContent = 'Registreringen lyckades! Vänligen logga in.';
         setTimeout(() => {
-            window.location.href = '/src/html/login.html'; // Omdirigera till inloggningssidan
+            window.location.href = 'login.html'; // Omdirigera till inloggningssidan
         }, 1000); // Vänta en sekund innan omdirigering
     })
     .catch(error => {

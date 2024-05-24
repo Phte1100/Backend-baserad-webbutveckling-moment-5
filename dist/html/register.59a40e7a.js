@@ -620,7 +620,7 @@ function loginUser(username, password) {
         if (data.token) {
             console.log("JWT Token:", data.token);
             localStorage.setItem("token", data.token);
-            window.location.href = "/src/html/dashboard.html";
+            window.location.href = "dashboard.html";
         } else throw new Error("Inget token mottaget");
     }).catch((error)=>{
         console.error("Fel vid inloggning:", error.message);
@@ -644,7 +644,7 @@ function registerUser(username, email, password) {
         const Feedback = document.getElementById("Feedback");
         Feedback.textContent = "Registreringen lyckades! V\xe4nligen logga in.";
         setTimeout(()=>{
-            window.location.href = "/src/html/login.html"; // Omdirigera till inloggningssidan
+            window.location.href = "login.html"; // Omdirigera till inloggningssidan
         }, 1000); // Vänta en sekund innan omdirigering
     }).catch((error)=>{
         console.error("Fel vid registrering:", error.message);
@@ -653,6 +653,6 @@ function registerUser(username, email, password) {
     });
 }
 
-},{}]},["aP7aF","8lRBv"], "8lRBv", "parcelRequire0f18")
+},{}]},["aP7aF","8lRBv"], "8lRBv", "parcelRequireb44e")
 
 //# sourceMappingURL=register.59a40e7a.js.map
