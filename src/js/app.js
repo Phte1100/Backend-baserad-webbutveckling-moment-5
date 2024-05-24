@@ -41,7 +41,7 @@ function loginUser(username, password) {
         if (data.token) {
             console.log('JWT Token:', data.token);
             localStorage.setItem('token', data.token);
-            window.location.href = '/src/html/dashboard.html';
+            window.location.href = '/src/dashboard.html';
         } else {
             throw new Error('Inget token mottaget');
         }
