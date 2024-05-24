@@ -36,7 +36,7 @@ function createMenuItem() {
     const price = sanitizeInput(document.getElementById('price').value);
     const category = sanitizeInput(document.getElementById('category').value);
 
-    fetch('http://localhost:3001/api/menu', {
+    fetch('https://backend-baserad-webbutveckling-moment-5.onrender.com/api/menu', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

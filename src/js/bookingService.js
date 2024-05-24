@@ -18,7 +18,7 @@ export function fetchBookings() {
         return;
     }
 
-    fetch('http://localhost:3001/api/bookings', {
+    fetch('https://backend-baserad-webbutveckling-moment-5.onrender.com/api/bookings', {
         headers: { 'Authorization': `Bearer ${token}` }
     })
     .then(response => {
@@ -42,7 +42,7 @@ export function createBooking() {
     const date = sanitizeInput(document.getElementById('date').value);
     const time = sanitizeInput(document.getElementById('time').value);
 
-    fetch('http://localhost:3001/api/bookings', {
+    fetch('https://backend-baserad-webbutveckling-moment-5.onrender.com/api/bookings', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export function updateBooking() {
     const date = document.getElementById('date').value;
     const time = document.getElementById('time').value;
 
-    fetch(`http://localhost:3001/api/bookings/${id}`, {
+    fetch(`https://backend-baserad-webbutveckling-moment-5.onrender.com/api/bookings/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ export function deleteBooking(id) {
         return;
     }
 
-    fetch(`http://localhost:3001/api/bookings/${id}`, {
+    fetch(`https://backend-baserad-webbutveckling-moment-5.onrender.com/api/bookings/${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -211,7 +211,7 @@ export function editBooking(id) {
         return;
     }
 
-    fetch(`http://localhost:3001/api/bookings/${id}`, {
+    fetch(`https://backend-baserad-webbutveckling-moment-5.onrender.com/api/bookings/${id}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }

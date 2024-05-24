@@ -23,7 +23,7 @@ let menuItems = [];
 
 // Funktion för att hämta menyalternativ från servern
 export function fetchMenuItems() {
-    fetch('http://localhost:3001/api/menu')
+    fetch('https://backend-baserad-webbutveckling-moment-5.onrender.com/api/menu')
     .then(response => {
         if (!response.ok) throw new Error(`Failed to fetch menu items. Status: ${response.status}`);
         return response.json();
@@ -115,7 +115,7 @@ function editMenuItem(id) {
         return;
     }
 
-    fetch(`http://localhost:3001/api/menu/${id}`, {
+    fetch(`https://backend-baserad-webbutveckling-moment-5.onrender.com/api/menu/${id}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -152,7 +152,7 @@ export function updateMenuItem() {
     const price = sanitizeInput(document.getElementById('price').value);
     const category = sanitizeInput(document.getElementById('category').value);
 
-    fetch(`http://localhost:3001/api/menu/${id}`, {
+    fetch(`https://backend-baserad-webbutveckling-moment-5.onrender.com/api/menu/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -198,7 +198,7 @@ function deleteMenuItem(id) {
         return;
     }
 
-    fetch(`http://localhost:3001/api/menu/${id}`, {
+    fetch(`https://backend-baserad-webbutveckling-moment-5.onrender.com/api/menu/${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`

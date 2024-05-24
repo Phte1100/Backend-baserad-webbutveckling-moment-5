@@ -25,7 +25,7 @@ function checkAuthentication() {
 // Funktion för att hämta skyddad data från servern
 function fetchProtectedData() {
     const token = localStorage.getItem('token');
-    fetch('http://localhost:3001/api/protected', {
+    fetch('https://backend-baserad-webbutveckling-moment-5.onrender.com/api/protected', {
         headers: {
             'Authorization': `Bearer ${token}`
         }

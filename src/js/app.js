@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // Funktion för att logga in
 function loginUser(username, password) {
-    fetch(`http://localhost:3001/api/login`, {
+    fetch(`https://backend-baserad-webbutveckling-moment-5.onrender.com/api/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ function loginUser(username, password) {
 
 // Funktion för att registrera ny användare
 function registerUser(username, email, password) {
-    fetch('http://localhost:3001/api/register', {
+    fetch('https://backend-baserad-webbutveckling-moment-5.onrender.com/api/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
