@@ -25,7 +25,7 @@
 70C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\.vscode133600663292890776 1
 109C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\@parcel\core\src\public\Bundle.js133610159772785225 0
 98C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\source-map\lib\util.js133610159769054362 0
-86C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\src\html\dashboard.html133610069205272554 0
+86C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\src\html\dashboard.html133610239640962242 0
 126C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\csso\node_modules\css-tree\cjs\convertor\index.cjs133610159774725648 0
 129C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\@parcel\core\test\fixtures\config\subfolder\.parcelrc133610159768464223 0
 89C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\timsort\build133610159766813853 1
@@ -83,7 +83,7 @@
 69C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\src\js133609696438947506 1
 147C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\lexer\structure.js133610159780526971 0
 99C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\csso\cjs\clean\Rule.cjs133610159772195074 0
-77C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\src\index.html133610152737926545 0
+77C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\src\index.html133610240749421339 0
 114C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\@mischnic\json-sourcemap\dist\index.js133610159765903648 0
 93C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\json5\lib\util.js133610159768364202 0
 76C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\src\js\app.js133610104328702586 0
@@ -179,7 +179,7 @@
 98C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\css-tree\lib\convertor133610159783197570 1
 119C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\caniuse-lite\data\features\css-scrollbar.js133610159783967744 0
 108C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\react-error-overlay\lib\index.js133610159766853861 0
-82C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\src\html\login.html133609685038002045 0
+82C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\src\html\login.html133610239010696103 0
 136C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\@parcel\optimizer-svgo\node_modules\svgo\lib\svgo\jsAPI.d.ts133610159779256686 0
 101C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\@parcel\utils\src\glob.js133610159771354882 0
 82C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\stable133610159765383534 1
@@ -189,7 +189,7 @@
 111C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\caniuse-lite\data\features\proxy.js133610159789769064 0
 88C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\caniuse-lite133610159792869771 1
 134C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\csso\node_modules\css-tree\lib\syntax\node\UnicodeRange.js133610159784257821 0
-85C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\src\html\register.html133609685115406010 0
+85C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\src\html\register.html133610240713975922 0
 138C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\@parcel\optimizer-svgo\node_modules\csso\lib\replace\Atrule.js133610159768394217 0
 144C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\@parcel\optimizer-svgo\node_modules\svgo\plugins\removeEmptyAttrs.js133610159773895459 0
 112C:\Users\46722\Desktop\Backend-baserad webbutveckling moment 5\node_modules\@parcel\transformer-raw\package.json133610159765263511 0
