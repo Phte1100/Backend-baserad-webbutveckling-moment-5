@@ -754,7 +754,7 @@ function deleteBooking(id) {
     const token = localStorage.getItem("token");
     if (!token) {
         console.log("No token found, redirecting to login.");
-        window.location.href = "/src/html/login.html";
+        window.location.href = "login.html";
         return;
     }
     fetch(`https://backend-baserad-webbutveckling-moment-5.onrender.com/api/bookings/${id}`, {
