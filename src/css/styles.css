@@ -186,8 +186,9 @@ i {
 }
 
 .imgicon {
-  width: 100px;
+  width: 150px;
   height: auto;
+  margin-top: 10%;
 }
 
 .opacity-min {
