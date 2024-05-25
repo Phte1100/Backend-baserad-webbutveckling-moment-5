@@ -3,12 +3,14 @@
     "parcel": "^2.12.0"
   },
   "name": "backend-baserad-webbutveckling---moment-4",
-  "source": "./src/index.html",
+  "source": "../dashboard.html",
   "version": "1.0.0",
-  "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
-  },
+
+    "scripts": {
+      "start": "parcel src/index.html src/html/login.html src/html/register.html src/html/dashboard.html",
+      "build": "parcel build src/index.html src/html/dashboard.html src/html/login.html src/html/register.html"
+    },
+
   "keywords": [],
   "author": "",
   "license": "ISC",

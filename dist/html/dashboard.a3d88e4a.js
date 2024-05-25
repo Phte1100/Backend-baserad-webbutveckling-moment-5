@@ -595,14 +595,7 @@ window.myFunction = (0, _utilsJs.myFunction);
 window.showSnackbar = (0, _utilsJs.showSnackbar);
 window.sanitizeInput = (0, _utilsJs.sanitizeInput);
 
-},{"./fetchBookings.js":"1PKMB","./createBooking.js":"14mSY","./fetchMenu.js":"38NU3","./createMenu.js":"6nujB","./protected.js":"fhgd9","./utils.js":"72Dku"}],"1PKMB":[function(require,module,exports) {
-// fetchBookings.js
-var _bookingServiceJs = require("./bookingService.js");
-document.addEventListener("DOMContentLoaded", function() {
-    (0, _bookingServiceJs.fetchBookings)();
-});
-
-},{"./bookingService.js":"7lj45"}],"6nujB":[function(require,module,exports) {
+},{"./utils.js":"72Dku","./fetchMenu.js":"38NU3","./createMenu.js":"6nujB","./fetchBookings.js":"1PKMB","./createBooking.js":"14mSY","./protected.js":"fhgd9"}],"6nujB":[function(require,module,exports) {
 /*
  * Denna fil hanterar skapande av nya menyalternativ på webbplatsen.
  * Innehåller funktioner för att skapa nya menyalternativ och sanera inmatade värden.
@@ -625,7 +618,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function createMenuItem() {
     const token = localStorage.getItem("token");
     if (!token) {
-        window.location.href = "/src/html/login.html";
+        window.location.href = "login.html";
         return;
     }
     const name = (0, _fetchMenuJs.sanitizeInput)(document.getElementById("menuName").value);
@@ -658,7 +651,14 @@ function createMenuItem() {
     });
 }
 
-},{"./fetchMenu.js":"38NU3","./utils.js":"72Dku"}],"fhgd9":[function(require,module,exports) {
+},{"./fetchMenu.js":"38NU3","./utils.js":"72Dku"}],"1PKMB":[function(require,module,exports) {
+// fetchBookings.js
+var _bookingServiceJs = require("./bookingService.js");
+document.addEventListener("DOMContentLoaded", function() {
+    (0, _bookingServiceJs.fetchBookings)();
+});
+
+},{"./bookingService.js":"7lj45"}],"fhgd9":[function(require,module,exports) {
 /*
 * Denna fil hanterar användarautentisering och skyddad data. 
 * Vid inladdning kontrollerar den om användaren är autentiserad och hämtar skyddad data.
@@ -672,7 +672,7 @@ function createMenuItem() {
 // Funktion för att kontrollera om användaren är autentiserad
 function checkAuthentication() {
     const token = localStorage.getItem("token");
-    if (!token) window.location.href = "/src/html/login.html"; // Omdirigera till inloggningssidan om ingen token finns
+    if (!token) window.location.href = "login.html"; // Omdirigera till inloggningssidan om ingen token finns
 }
 // Funktion för att hämta skyddad data från servern
 function fetchProtectedData() {
@@ -687,7 +687,7 @@ function fetchProtectedData() {
                 // Token är ogiltig eller har gått ut
                 alert("Sessionen har g\xe5tt ut. V\xe4nligen logga in igen.");
                 localStorage.removeItem("token"); // Rensa token
-                window.location.href = "/src/html/login.html"; // Omdirigera till inloggningssidan
+                window.location.href = "login.html"; // Omdirigera till inloggningssidan
             }
             throw new Error("Kunde inte h\xe4mta skyddad data.");
         }
@@ -717,7 +717,7 @@ function logout() {
     const feedback = document.getElementById("feedback");
     if (feedback) feedback.textContent = "Du har loggats ut.";
     setTimeout(()=>{
-        window.location.href = "/src/html/login.html"; // Omdirigera till inloggningssidan
+        window.location.href = "login.html"; // Omdirigera till inloggningssidan
     }, 1000); // Vänta en sekund innan omdirigering
 }
 
