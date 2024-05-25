@@ -218,6 +218,8 @@ i {
 #menuSection article {
   text-align: center;
   border: 3px solid #fff;
+  min-width: 23%;
+  max-width: 25%;
   margin: 2%;
   padding: .25em .5em;
   box-shadow: 1px 1px, 2px 2px, 3px 3px, 4px 4px, 5px 5px #fff;
@@ -405,6 +407,12 @@ footer {
 @media screen and (width <= 600px) {
   .parallax1, .parallax2 {
     display: none;
+  }
+}
+
+@media screen and (width <= 750px) {
+  #menuSection article {
+    max-width: 60%;
   }
 }
 /*# sourceMappingURL=index.77a9bc14.css.map */

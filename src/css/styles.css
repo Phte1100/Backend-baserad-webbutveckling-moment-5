@@ -226,8 +226,10 @@ i {
   padding: 0.25em 0.5em;
   box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px white;
   border: 3px solid white;
-  margin: 2%;
   text-align: center;
+  max-width: 25%;
+  min-width: 23%;
+  margin: 2%;
 }
 
 #bookingForm, #loginForm, #registerForm, #menuForm {
@@ -449,3 +451,11 @@ footer {
     display: none;
   }
 }
+
+@media screen and (max-width: 750px) {
+  #menuSection article {
+    max-width: 60%;
+
+  }
+}
+
