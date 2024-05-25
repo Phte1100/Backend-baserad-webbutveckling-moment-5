@@ -642,7 +642,7 @@ function showSnackbar(message) {
 function fetchBookings() {
     const token = localStorage.getItem("token");
     if (!token) {
-        window.location.href = "/src/html/login.html";
+        window.location.href = "login.html";
         return;
     }
     fetch("https://backend-baserad-webbutveckling-moment-5.onrender.com/api/bookings", {
@@ -814,7 +814,7 @@ function editBooking(id) {
     const token = localStorage.getItem("token");
     if (!token) {
         console.log("No token found, redirecting to login.");
-        window.location.href = "/src/html/login.html";
+        window.location.href = "login.html";
         return;
     }
     fetch(`https://backend-baserad-webbutveckling-moment-5.onrender.com/api/bookings/${id}`, {
@@ -967,7 +967,7 @@ function editMenuItem(id) {
     const token = localStorage.getItem("token");
     if (!token) {
         console.log("No token found, redirecting to login.");
-        window.location.href = "/src/html/login.html";
+        window.location.href = "login.html";
         return;
     }
     fetch(`https://backend-baserad-webbutveckling-moment-5.onrender.com/api/menu/${id}`, {
@@ -992,7 +992,7 @@ function editMenuItem(id) {
 function updateMenuItem() {
     const token = localStorage.getItem("token");
     if (!token) {
-        window.location.href = "/src/html/login.html";
+        window.location.href = "login.html";
         return;
     }
     const id = document.getElementById("menuId").value;
@@ -1040,7 +1040,7 @@ function deleteMenuItem(id) {
     const token = localStorage.getItem("token");
     if (!token) {
         console.log("No token found, redirecting to login.");
-        window.location.href = "/src/html/login.html";
+        window.location.href = "login.html";
         return;
     }
     fetch(`https://backend-baserad-webbutveckling-moment-5.onrender.com/api/menu/${id}`, {

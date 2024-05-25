@@ -111,7 +111,7 @@ function editMenuItem(id) {
     const token = localStorage.getItem('token');
     if (!token) {
         console.log('No token found, redirecting to login.');
-        window.location.href = '/src/html/login.html';
+        window.location.href = 'login.html';
         return;
     }
 
@@ -142,7 +142,7 @@ function editMenuItem(id) {
 export function updateMenuItem() {
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = '/src/html/login.html';
+        window.location.href = 'login.html';
         return;
     }
 
@@ -194,7 +194,7 @@ function deleteMenuItem(id) {
     const token = localStorage.getItem('token');
     if (!token) {
         console.log('No token found, redirecting to login.');
-        window.location.href = '/src/html/login.html';
+        window.location.href = 'login.html';
         return;
     }
 

@@ -14,7 +14,7 @@ export function showSnackbar(message) {
 export function fetchBookings() {
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = '/src/html/login.html';
+        window.location.href = 'login.html';
         return;
     }
 
@@ -207,7 +207,7 @@ export function editBooking(id) {
     const token = localStorage.getItem('token');
     if (!token) {
         console.log('No token found, redirecting to login.');
-        window.location.href = '/src/html/login.html';
+        window.location.href = 'login.html';
         return;
     }
 

@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function createMenuItem() {
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = '/src/html/login.html';
+        window.location.href = 'login.html';
         return;
     }
 
