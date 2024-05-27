@@ -456,7 +456,9 @@ footer {
 @media screen and (max-width: 750px) {
   #menuSection article {
     max-width: 60%;
-
+  }
+  .section {
+    width: 80%;
   }
 }
 

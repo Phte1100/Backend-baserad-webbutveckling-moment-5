@@ -415,5 +415,9 @@ footer {
   #menuSection article {
     max-width: 60%;
   }
+
+  .section {
+    width: 80%;
+  }
 }
 /*# sourceMappingURL=index.77a9bc14.css.map */
