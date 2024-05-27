@@ -595,7 +595,14 @@ window.myFunction = (0, _utilsJs.myFunction);
 window.showSnackbar = (0, _utilsJs.showSnackbar);
 window.sanitizeInput = (0, _utilsJs.sanitizeInput);
 
-},{"./utils.js":"72Dku","./fetchMenu.js":"38NU3","./createMenu.js":"6nujB","./fetchBookings.js":"1PKMB","./createBooking.js":"14mSY","./protected.js":"fhgd9"}],"6nujB":[function(require,module,exports) {
+},{"./fetchBookings.js":"1PKMB","./createBooking.js":"14mSY","./fetchMenu.js":"38NU3","./createMenu.js":"6nujB","./protected.js":"fhgd9","./utils.js":"72Dku"}],"1PKMB":[function(require,module,exports) {
+// fetchBookings.js
+var _bookingServiceJs = require("./bookingService.js");
+document.addEventListener("DOMContentLoaded", function() {
+    (0, _bookingServiceJs.fetchBookings)();
+});
+
+},{"./bookingService.js":"7lj45"}],"6nujB":[function(require,module,exports) {
 /*
  * Denna fil hanterar skapande av nya menyalternativ på webbplatsen.
  * Innehåller funktioner för att skapa nya menyalternativ och sanera inmatade värden.
@@ -651,14 +658,7 @@ function createMenuItem() {
     });
 }
 
-},{"./fetchMenu.js":"38NU3","./utils.js":"72Dku"}],"1PKMB":[function(require,module,exports) {
-// fetchBookings.js
-var _bookingServiceJs = require("./bookingService.js");
-document.addEventListener("DOMContentLoaded", function() {
-    (0, _bookingServiceJs.fetchBookings)();
-});
-
-},{"./bookingService.js":"7lj45"}],"fhgd9":[function(require,module,exports) {
+},{"./fetchMenu.js":"38NU3","./utils.js":"72Dku"}],"fhgd9":[function(require,module,exports) {
 /*
 * Denna fil hanterar användarautentisering och skyddad data. 
 * Vid inladdning kontrollerar den om användaren är autentiserad och hämtar skyddad data.

@@ -656,6 +656,14 @@ function createBooking() {
     const numberOfPeople = sanitizeInput(document.getElementById("numberOfPeople").value);
     const date = sanitizeInput(document.getElementById("date").value);
     const time = sanitizeInput(document.getElementById("time").value);
+    console.log("Creating booking with data:", {
+        name,
+        phone,
+        email,
+        numberOfPeople,
+        date,
+        time
+    });
     fetch("https://backend-baserad-webbutveckling-moment-5.onrender.com/api/bookings", {
         method: "POST",
         headers: {
@@ -675,8 +683,10 @@ function createBooking() {
     }).then((data)=>{
         console.log("Booking created:", data);
         showSnackbar("Bokning skapad!");
-        fetchBookings(); // Uppdatera bokningslistan
         clearForm();
+        // Kontrollerar om användaren har JWT-token innan anrop till fetchBookings()
+        const token = localStorage.getItem("token");
+        if (token) fetchBookings(); // Uppdatera bokningslistan om användaren är inloggad
     }).catch((error)=>{
         console.error("Error:", error);
         showSnackbar("N\xe5got gick fel. F\xf6rs\xf6k igen.");
